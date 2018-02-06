@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Audio for phone</title>
+    <script type="text/javascript" src="resources/js/main.js"></script>
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/material/material.min.css">
+    <script src="resources/material/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <!-- Simple header with fixed tabs. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+    mdl-layout--fixed-tabs">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Audio for phone</span>
+            </div>
+            <!-- Tabs -->
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Home</a>
+                <a href="#fixed-tab-2" class="mdl-layout__tab">Favorites</a>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Audio for phone</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="#">Suggests a sound</a>
+                <a class="mdl-navigation__link" href="#">More applications</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+                <div class="page-content">
+                    <ul class='mdl-list'>
+                        <script>
+                            for (var i=0;i<JSON.parse(window.localStorage.getItem("audio")).length;i++) {
+                                document.write('<li class="mdl-list__item" onclick="PlaySound('+"'"+ JSON.parse(window.localStorage.getItem("audio"))[i].link +"'"+ ')"><span class="mdl-list__item-primary-content">'+JSON.parse(window.localStorage.getItem("audio"))[i].nume+'</span>'+ ' <div class="add" style=":hover{color: red}" onclick="addItem('+i+','+"'"+audio[i].link+"'"+','+"'"+audio[i].nume+"'"+');"></div> ' +'</li>');
+                            }
+                        </script>
+                    </ul>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+                <div class="page-content">
+                    <ul class='mdl-list'>                                        
+                        <script>
+                            for (var i=0;i<JSON.parse(window.localStorage.getItem("audio")).length;i++) {
+                                if(window.localStorage.getItem("audio_"+i)!=null){
+                                    document.write('<li class="mdl-list__item" onclick="PlaySound('+"'"+ JSON.parse(window.localStorage.getItem("audio_"+i))[0].link +"'"+ ')"><span class="mdl-list__item-primary-content">'+JSON.parse(window.localStorage.getItem("audio_"+i))[0].nume+'</span>'+ ' <div class="remove" style=":hover{color: red}" onclick="deleteItem('+"'"+"audio_"+i+"'"+')"></div> ' +'</li>');
+                                }
+                            }
+                        </script>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+</body>
+</html>
+
+
